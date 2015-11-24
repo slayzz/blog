@@ -1,11 +1,9 @@
 <?php
-$a =&$b;
-$a = 10;
-echo $b;
-$b = 23;
-echo $a;
-echo $b;
-
+$array = array('wea re champ','12','wins');
+$man = array_map(function($param) {
+  return $param;
+} , $array);
+print_r($man);
 /*
 #34495E
 #3498DB
@@ -14,5 +12,3 @@ echo $b;
 
 
  ?>
-
-

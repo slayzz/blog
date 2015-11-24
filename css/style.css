@@ -10,10 +10,16 @@
 
 .form_for_user {
 	border: 1px black solid;
-	margin-top: 10px; 
+	margin-top: 10px;
 	padding: 15px;
 }
+.form-inline {
+	margin-top: 1%;
+}
+#man {
+	margin-top: 10%;
+}
 .starter-template {
-	border: 1px black solid;
-	margin-top : 8%;}
-	
+	border: black solid 1px;
+	margin-top: 8%;
+}

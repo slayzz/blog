@@ -1,15 +1,15 @@
 <?php
-
 ?>
 
-<form class="form-inline">
+<form method="post" class="form-inline">
   <div class="form-group">
-    <label for="exampleInputName2">Имя</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+    <label for="mail">Email</label>
+    <input type="email" class="form-control" name="mail" placeholder="Твой email">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail2">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+    <label for="pass">Пароль</label>
+    <input type="password" class="form-control" name="pass" placeholder="Твой пароль">
   </div>
   <button type="submit" class="btn btn-default">Войти</button>
+  <p class="bg-danger"><?=@$this->error?></p>
 </form>

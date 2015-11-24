@@ -2,6 +2,15 @@
 class ctrl {
 	public function __construct() {
 		$this->db = new db();
+
+		if (!empty($_COOKIE['uid']) && !empty($_COOKIE['key'])){
+			$this->user = $this->db->query("SELECT * FROM
+				admin WHERE id = ? AND cookie = ?",
+				$_COOKIE['uid'], $_COOKIE['key']);
+		}else {
+			$this->user = false;
+			echo "no";
+		}
 	}
 	public function out($tplname,$nested=false) {
 		if (!$nested){
@@ -10,6 +19,23 @@ class ctrl {
 		}else {
 			include 'tpl/' . $tplname;
 		}
+	}
+	private function userExist(){
+		$url = $_SERVER['REQUEST_URI'];
+		$search = '~';
+		if (strstr($url,$search)){
+			$url = explode('/',$url);
+			foreach ($url as $value){
+				if (strstr($value,$search)){
+					$url = $value;
+					break;
+				}else {
+					$url = "";
+				}
+			}
+		}
+
+		return $url . "/";
 	}
 }
 
@@ -27,7 +53,7 @@ class app {
 		echo $url;
 		if (!preg_match('#^[a-zA-Z0-9.,-]*$#' , $url))
 			throw new Exception('Invalid path');
-		$ctrlName = 'ctrl'. ucfirst($url). '.php';
+		$ctrlName = 'ctrl'. ucfirst($url);
 		if (file_exists('app/'. $ctrlName)) {
 			$this->runController($ctrlName);
 		}else {
@@ -44,7 +70,7 @@ class app {
 				if (empty($this->route)){
 					$method = 'index';
 				}else{
-					$method = $name_for_method;
+					$method = $this->route;
 				}
 				if (method_exists($ctrl, $method)){
 					$ctrl->$method();
@@ -54,9 +80,6 @@ class app {
 			}
   }
 
-	private function userExist(){
-		$url = $_SERVER['REQUEST_URI'];
-	}
 }
 
 

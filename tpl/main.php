@@ -35,9 +35,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Домой</a></li>
-            <li><a href="/~slayzz/?login">Войти</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="?index">Домой</a></li>
+            <?php if(!$this->user){ ?>
+            <li><a href="?login">Войти</a></li>
+            <?php }elseif ($this->user){ ; ?>
+            <li><a href="#contact">Добавить пост</a></li>
+            <?php } ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -47,16 +50,12 @@
 
       <div class="starter-template">
 
-        <?php $this->out($this->tpl,true);?>
+        <p><?php $this->out($this->tpl,true);?></p>
 
       </div>
 
-    </div><!-- /.container -->
+    </div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"> </script>
   </body>

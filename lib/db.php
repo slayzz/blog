@@ -11,7 +11,7 @@ public function __construct() {
 		$sql = array_shift($args);
 		$link = $this->mysqli;
 		$args = array_map(function($param) use ($link) {
-			return $link->escape_string($param);
+			return "'" . $link->escape_string($param) . "'";
 		},$args);
 
 		$sql = str_replace(array('%','?'), array('%%','%s'),$sql);
@@ -39,4 +39,3 @@ public function __construct() {
 	}
 }
 ?>
-
