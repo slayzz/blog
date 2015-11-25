@@ -36,10 +36,10 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="?index">Домой</a></li>
-            <?php if(!$this->user){ ?>
+            <?php if(!$this->user){  ?>
             <li><a href="?login">Войти</a></li>
-            <?php }elseif ($this->user){ ; ?>
-            <li><a href="#contact">Добавить пост</a></li>
+            <?php } if($this->user){  ?>
+            <li><a href="?add">Добавить пост</a></li>
             <?php } ?>
           </ul>
         </div><!--/.nav-collapse -->

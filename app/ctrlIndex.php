@@ -1,4 +1,5 @@
 <?php
+header('Content-type: text/html; charset=utf-8');
 class ctrlIndex extends ctrl {
 
 	function index() {
@@ -23,10 +24,21 @@ class ctrlIndex extends ctrl {
 				}else {
 					$this->error = "Неправильный email или пароль";
 				}
-
 		}
-
   	$this->out('login.php');
+  }
+
+  function add() {
+  	if (!$this->user) return header("Location: /~slayzz");
+
+		if (!empty($_POST)){
+
+			$this->db->query('INSERT INTO post(title,post,ctime)
+			 	VALUES(?,?,?)', htmlspecialchars($_POST['title']),
+				$_POST['post'], time());
+				header("Location: /~slayzz");
+		}
+	$this->out('add.php');
   }
 }
 
