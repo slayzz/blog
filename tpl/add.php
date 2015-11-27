@@ -1,4 +1,8 @@
-<form class="form-horizontal" method="post">
+<?php
+header('Content-Type: text/html; charset=utf-8');
+?>
+
+<form accept-charset="utf-8" class="form-horizontal" method="post">
   <div class="form-group form-group-lg">
     <label class="col-sm-2 control-label"
 		for="formGroupInputLarge">Заголовок</label>

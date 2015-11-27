@@ -1,7 +1,8 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 include "lib/db.php";
 include "lib/base.php";
-$new = new app(substr($_SERVER['REQUEST_URI'],10));
+$new = new app(substr($_SERVER['REQUEST_URI'],2));
 
  ?>
 <!-- <head>

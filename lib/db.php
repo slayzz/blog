@@ -2,7 +2,6 @@
 class db {
 public function __construct() {
 	$this->mysqli = new mysqli("localhost","root", "236801", "blog");
-	mysql_query('SET NAMES utf8');
 	}
 
 	public function query($sql) {
