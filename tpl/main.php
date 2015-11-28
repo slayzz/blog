@@ -18,9 +18,9 @@ header('Content-type: text/html; charset=utf-8');
     <link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
+<!--    <link href="starter-template.css" rel="stylesheet">-->
 
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<!--    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
 
   </head>
 
@@ -34,7 +34,7 @@ header('Content-type: text/html; charset=utf-8');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Мега Блог</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -61,5 +61,6 @@ header('Content-type: text/html; charset=utf-8');
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"> </script>
+    <script src="js/javascript.js"></script>
   </body>
 </html>

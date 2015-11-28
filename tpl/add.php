@@ -1,6 +1,3 @@
-<?php
-header('Content-Type: text/html; charset=utf-8');
-?>
 
 <form accept-charset="utf-8" class="form-horizontal" method="post">
   <div class="form-group form-group-lg">
