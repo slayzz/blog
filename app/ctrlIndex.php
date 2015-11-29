@@ -48,12 +48,57 @@ class ctrlIndex extends ctrl
     function del($id)
     {
         if (!$this->user)
-            return hheader("Location: /");
+            return header("Location: /");
 
         $this->db->query('DELETE FROM post WHERE id = ?', $id);
         header("Location: /");
     }
 
+    function edit($id) {
+        if (!$this->user) return header('Location: /');
+        if (!empty($_POST)) {
+
+            $this->db->query("UPDATE post SET title = ?, post = ? WHERE id = ?",
+                htmlspecialchars($_POST['title']),$_POST['post'], $id);
+            echo "dsads";
+            header('Location: /');
+        }
+
+        $this->post =
+            $this->db->query("SELECT * FROM post WHERE id = ?", $id)->assoc();
+
+        $this->out('add.php');
+    }
+
+    function post($id) {
+
+        $this->post =
+            $this->db->query("SELECT * FROM post WHERE id = ?", $id)->assoc();
+        $this->comments =
+            $this->db->query("SELECT * FROM comment WHERE postid = ?", $id)->all();
+        $this->out('post.php');
+    }
+
+    function addComment($postid) {
+        $this->db->query("INSERT INTO comment(postid, name,post)
+          VALUES(?,?,?)", $postid, htmlspecialchars($_POST['name']),
+          htmlspecialchars($_POST['post']));
+        setcookie('name', $_POST['name'], time() + 86400 * 30, '/');
+        header('Location: /?post/'. intval($postid));
+    }
+
+    function delComment($commentid, $postid) {
+        if (!$this->user) return header('Location: /');
+
+        $this->db->query('DELETE FROM comment WHERE id = ?', $commentid);
+        header('Location :/?post/'.intval($postid));
+    }
+
+    function logoff() {
+        setcookie('uid', '', 0, '/');
+        setcookie('key', '', 0, '/');
+        return header('Location: /');
+    }
 }
 
 ?>

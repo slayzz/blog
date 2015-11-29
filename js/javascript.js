@@ -1,47 +1,52 @@
-/* global obj, s, click */
+/*
+/!* global obj, s, click *!/
 
 $(document).ready(function () {
     var divTitle;
     divTitle = $('.for_java');
     var i = 0;
     var array = [];
+
+    function redText() {
+        var txt = $(this).text();
+        var reg = /^[А-Я]/;
+        if (reg.test(txt)) {
+            $(this).text(txt);
+        }
+        var char = '';
+        var upChar = '';
+        for (var i = 0; i < txt.length; i++) {
+            char = txt.charAt(i);
+
+           if (!(reg.test(txt.charAt(0)))) {
+                upChar = char.toUpperCase();
+                txt = txt.substr(1);
+                txt = upChar + txt;
+            }
+            if (char == '.') {
+                for (var j = i + 1; j < txt.length; j++) {
+                    if (txt.charAt(j) != ' ') {
+                        var newString1 = '';
+                        var newString2 = '';
+                        upChar = txt.charAt(j).toUpperCase();
+                        newString1 = txt.slice(0, j);
+                        newString2 = txt.slice(j + 1);
+                        txt = newString1 + upChar + newString2;
+                        break;
+                    }
+                }
+
+            }
+        }
+        $(this).text(txt);
+        $(this).animate({'marginLeft': '0', 'font-size': '30'});
+    }
     while (i < divTitle.length) {
         array.push(divTitle[i]);
         i++;
     }
     function WhereDefine() {
-        divTitle.on('click', function () {
-            var txt = $(this).text();
-            var reg = /^[А-Я]/;
-            if (reg.test(txt)) {
-                $(this).text(txt);
-            }
-            var char = '';
-            var upChar = '';
-            for (var i = 0; i < txt.length; i++) {
-                char = txt.charAt(i);
-                if (!(reg.test(txt.charAt(0)))) {
-                    upChar = char.toUpperCase();
-                    txt = txt.substr(1);
-                    txt = upChar + txt;
-                }
-                if (char == '.' || char == ' ') {
-                    for (var j = i + 1; j < txt.length; j++) {
-                        if (txt.charAt(j) != ' ') {
-                            var newString1 = '';
-                            var newString2 = '';
-                            upChar = txt.charAt(j).toUpperCase();
-                            newString1 = txt.slice(0, j);
-                            newString2 = txt.slice(j + 1);
-                            txt = newString1 + upChar + newString2;
-                            break;
-                        }
-                    }
-
-                }
-            }
-            $(this).text(txt);
-        });
+        divTitle.on('click', redText);
     }
 
     WhereDefine();
@@ -86,15 +91,13 @@ $(document).ready(function () {
     }
 
     objectWithResult = whereErrors();
-    for (i = 0;i < objectWithResult.c.length; i++){
-        objectWithResult.c[i].animate({color : "red"}, 1000,'linear', function (){
-
-        }
-
-        );
+    for (i = 0; i < objectWithResult.c.length; i++) {
+        console.log(objectWithResult.c[i]);
+        objectWithResult.c[i].animate({'marginLeft': '10'})
     }
 
-    console.log(objectWithResult.c[0]);
+
 })
 ;
 
+*/

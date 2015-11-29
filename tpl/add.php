@@ -12,6 +12,6 @@
   </div>
 	<label for="text">Текст</label>
 	<textarea name="post"class="form-control" rows="3"
-	style="height: 300px;"></textarea>
-	<button type="submit" class="btn btn-primary">Добавить</button>
+	style="height: 300px;"><?php echo $this->post['post'] ?></textarea>
+	<button name="submiitus" type="submit" class="btn btn-primary">Добавить</button>
 </form>
