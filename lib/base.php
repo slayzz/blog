@@ -1,8 +1,13 @@
 <?php
 
-class ctrl {
+class ctrl
+{
 
-    public function __construct() {
+    /**
+     * ctrl constructor.
+     */
+    public function __construct()
+    {
         $this->db = new db();
 
         if (!empty($_COOKIE['uid']) && !empty($_COOKIE['key'])) {
@@ -10,11 +15,15 @@ class ctrl {
 				admin WHERE id = ? AND cookie = ?", $_COOKIE['uid'], $_COOKIE['key']);
         } else {
             $this->user = false;
-            echo "no";
         }
     }
 
-    public function out($tplname, $nested = false) {
+    /**
+     * @param $tplname
+     * @param bool|false $nested
+     */
+    public function out($tplname, $nested = false)
+    {
         if (!$nested) {
             $this->tpl = $tplname;
             include 'tpl/main.php';
@@ -23,7 +32,8 @@ class ctrl {
         }
     }
 
-    private function userExist() {
+    private function userExist()
+    {
         $url = $_SERVER['REQUEST_URI'];
         $search = '~';
         if (strstr($url, $search)) {
@@ -43,15 +53,18 @@ class ctrl {
 
 }
 
-class app {
+class app
+{
 
-    public function __construct($path) {
+    public function __construct($path)
+    {
         $this->route = explode('/', $path);
 
         $this->run();
     }
 
-    private function run() {
+    private function run()
+    {
         $url = array_shift($this->route);
         if (!preg_match('#^[a-zA-Z0-9.,-]*$#', $url))
             throw new Exception('Invalid path');
@@ -64,7 +77,8 @@ class app {
         }
     }
 
-    private function runController($ctrlName) {
+    private function runController($ctrlName)
+    {
         include "app/" . $ctrlName . '.php';
         $ctrl = new $ctrlName;
         if (empty($this->route) || empty($this->route[0])) {
@@ -80,7 +94,7 @@ class app {
                     $ctrl->$method();
                 else
                     call_user_func_array(array($ctrl, $method), $this->route);
-            }else {
+            } else {
                 // throw new Exception("error 404");
                 echo "sdasd";
             }

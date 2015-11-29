@@ -1,14 +1,16 @@
 <?php
-header('Content-type: text/html; charset=utf-8');
 
-class ctrlIndex extends ctrl {
+class ctrlIndex extends ctrl
+{
 
-    function index() {
+    function index()
+    {
         $this->posts = $this->db->query('SELECT * FROM post')->all();
         $this->out('posts.php');
     }
 
-    function login() {
+    function login()
+    {
 
         if (!empty($_POST)) {
             $user = $this->db->query("SELECT * FROM admin WHERE
@@ -29,7 +31,8 @@ class ctrlIndex extends ctrl {
         $this->out('login.php');
     }
 
-    function add() {
+    function add()
+    {
         if (!$this->user)
             return header("Location: /");
 
@@ -42,7 +45,8 @@ class ctrlIndex extends ctrl {
         $this->out('add.php');
     }
 
-    function del($id) {
+    function del($id)
+    {
         if (!$this->user)
             return hheader("Location: /");
 
@@ -51,4 +55,5 @@ class ctrlIndex extends ctrl {
     }
 
 }
+
 ?>

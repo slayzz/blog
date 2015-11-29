@@ -1,8 +1,8 @@
 <?php
-$array = array('wea re champ','12','wins');
-$man = array_map(function($param) {
-  return $param;
-} , $array);
+$array = array('wea re champ', '12', 'wins');
+$man = array_map(function ($param) {
+    return $param;
+}, $array);
 print_r($man);
 /*
 #34495E
@@ -11,4 +11,4 @@ print_r($man);
 #F1C40F*/
 
 
- ?>
+?>
