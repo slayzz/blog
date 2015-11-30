@@ -95,9 +95,32 @@ $(document).ready(function () {
         console.log(objectWithResult.c[i]);
         objectWithResult.c[i].animate({'marginLeft': '10'})
     }
-
-
+    var stroka = "денис        .          молодец"
+    var stroka2 = stroka.split('.');
+    alert(stroka2);
 })
 ;
 
 */
+$(document).ready(function () {
+    $(':checkbox').on('change', function () {
+        var form = $(this).closest('form');
+        sendData = [];
+
+        $(':checkbox',form).map(function(index,element){
+            if($(element).prop('checked')){
+                sendData[$(element).attr('name')] = $(element).val();
+            }
+        })
+        console.log(sendData);
+        $.ajax({
+            url :'/index.php',
+            type: 'POST',
+            data : sendData
+        });
+    });
+
+});
+
+var mew = window.location.href;
+console.log(mew.substr(14));

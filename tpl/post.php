@@ -41,6 +41,7 @@
         </div>
 
     <?php } ?>
+    <?php if (!$this->user){?>
     <h4>Добавить комментарий: </h4>
 
     <form method="POST" action="/?addComment/<?php echo $this->post['id'] ?>" class="form-inline well">
@@ -50,4 +51,5 @@
         <label for="post">Коммент: </label><input type="text" name="post">
         <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
+    <?php }?>
 </div>
